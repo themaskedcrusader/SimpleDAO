@@ -575,6 +575,11 @@ public class Utils
                     stmt.setTime( bv.getPosition(), new java.sql.Time(((java.util.Date)bv.getValue()).getTime()));
 */
             }
+	    else if ( bv.getValue() instanceof java.lang.Boolean )
+	    {
+                if ( log.isDebugEnabled() ) { log.debug("bindVariables - var '" + bv.getName() + "' is Boolean");}
+                statement.setBoolean(bv.getPosition(), (Boolean) bv.getValue());
+	    }
             else
             {
                 if ( log.isDebugEnabled() ) { log.debug("bindStatementVariable - var '" + bv.getName() + "' is not mapped");}
